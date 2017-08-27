@@ -1,10 +1,16 @@
-(function() {
-    function HomeCtrl(Room) {
+angular.module('blocChat')
+    .controller('HomeCtrl', function(Room, $uibModal, $log, $document){
       this.Rooms = Room.all;
-      console.log(this.Rooms);
-    }
+      this.animationsEnabled = true;
 
-    angular
-        .module('blocChat')
-        .controller('HomeCtrl', ['Room',HomeCtrl]);
-})();
+      this.open = function(){
+        $uibModal.open({
+           animation: this.animationsEnabled,
+           ariaLabelledBy: 'modal-title',
+           ariaDescribedBy: 'modal-body',
+           templateUrl: 'templates/newRoomModal.html',
+           controller: 'ModalCtrl',
+           controllerAs: 'modalControl',
+         });
+       };
+    });

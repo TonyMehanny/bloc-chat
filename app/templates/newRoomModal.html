@@ -1,0 +1,19 @@
+<div class="modal-content">
+
+    <div class="modal-header">
+      <h3 class="modal-title" id="modal-title">Create a new room</h3>
+    </div>
+
+    <div class="modal-body" id="modal-body">
+      <h4 class="modal-body-directive" id="modal-body-directive">Enter a room name:</h3>
+        <div class="form-group">
+          <input type="text" name="newRoomName" ng-model="name" class="form-control" >
+        </div>
+    </div>
+
+    <div class="modal-footer">
+      <button class="btn btn-primary" type="button" ng-click="modalControl.submit(name)">OK</button>
+      <button class="btn btn-warning" type="button" ng-click="modalControl.cancel()">Cancel</button>
+    </div>
+
+</div>
