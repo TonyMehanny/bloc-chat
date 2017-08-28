@@ -1,7 +1,11 @@
 angular.module('blocChat')
-    .controller('HomeCtrl', function(Room, $uibModal, $log, $document){
+    .controller('HomeCtrl', function(Room, Message, $uibModal, $log, $document){
       this.Rooms = Room.all;
+      this.messages = {}; //Message.all;
       this.animationsEnabled = true;
+      this.activeRoom = {
+        name: ""
+      }
 
       this.open = function(){
         $uibModal.open({
@@ -13,4 +17,14 @@ angular.module('blocChat')
            controllerAs: 'modalControl',
          });
        };
+
+       this.getByRoomId = function(roomId) {
+         this.messages = Message.getByRoomId(roomId);
+       };
+       this.setActiveRoom = function(room) {
+           this.activeRoom.name = room.room;
+       }
+
+       //this.messages = Message.all;
+
     });

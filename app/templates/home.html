@@ -1,10 +1,32 @@
-<h1>Home Page</h1>
 
-<div>
-  <h3>Bloc Chat</h3>
-  <button ng-click = "home.open()">New Room</button>
-<div>
+<main class ="home-page container-fluid">
+  <div class = "row whole-screen">
 
-  <div ng-repeat="room in home.Rooms">
-    {{room.$value}}
-  </div>
+    <div class="left-panel col-md-4">
+      <div class = "left-panel-header row">
+        <div>
+          <h3 class="col-sm-6">Bloc Chat</h3>
+          <button class ="col-sm-3 btn btn-default" ng-click = "home.open()">New Room</button>
+        </div>
+      </div>
+
+        <ul class = "row">
+          <li ng-repeat="room in home.Rooms">
+            <a href="#" ng-click="home.setActiveRoom(room); home.getByRoomId(room.$id)">{{room.room}}</a>
+          </li>
+        </ul>
+    </div>
+
+    <div class="chatroom-view col-md-8">
+        <h3>{{ home.activeRoom.name }}</h1>
+        <div class="message-container">
+          <div class="chat-view-message" ng-repeat="message in home.messages">
+              <span class="chat-message-user"><b>{{ message.username }}</b></span>
+              <span class="chat-message-time"><i>{{ message.sentAt | date:'short' }}</i></span>
+              <span class="chat-message-content">{{ message.content }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+</main>

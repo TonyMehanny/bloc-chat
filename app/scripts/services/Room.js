@@ -6,9 +6,13 @@
 
     Room.all = rooms;
 
-    Room.add = function(room) {
-        //Use the firebase method $add here
-    }
+    Room.add = function(name) {
+      //var updates = {};
+      //updates['/rooms/' + name] = name;
+      
+      rooms.$add({"room":name});
+      //firebase.database().ref().update(updates);
+      };
 
     return Room;
   }
