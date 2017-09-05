@@ -1,9 +1,9 @@
 angular.module('blocChat')
-.factory('Message', function($firebaseArray){
+.factory('MessageFactory', function($firebaseArray, $cookies){
 
     var Message = {};
     var ref = firebase.database().ref().child("messages");
-    //var messages = $firebaseArray(ref);
+    var messages = $firebaseArray(ref);
 
     Message.getByRoomId = function(roomId) {
       // Filter the messages by their room ID.
@@ -12,6 +12,10 @@ angular.module('blocChat')
       // var roomMessages = $firebaseArray(roomRef);
       //
       // this.all = roomMessages;
+    };
+
+    Message.send = function(newMessage){
+      return messages.$add(newMessage);
     };
 
     return Message;

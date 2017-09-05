@@ -1,0 +1,11 @@
+.top-buffer {
+  margin-top: 17px;
+}
+
+.left-buffer{
+  margin-left: 10px;
+}
+
+.no-bullets{
+  list-style-type: none;
+}
